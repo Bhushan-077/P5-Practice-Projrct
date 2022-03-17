@@ -1,0 +1,82 @@
+Registration TestCases=
+package seleniumPhase5Demo;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+public class registration {
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+System.setProperty("webdriver.chrome.driver","C:\\chrome 
+driver\\chromedriver.exe");
+ WebDriver driver=new ChromeDriver();
+ 
+driver.manage().window().maximize();
+driver.get("http://demo.automationtesting.in/Register.html");
+//first name
+driver.findElement(By.xpath("//input[@placeholder='first 
+Name']")).sendKeys("Abhi");
+//last name
+driver.findElement(By.xpath("//input[@placeholder='Last 
+Name']")).sendKeys("Dhavale");
+//address
+driver.findElement(By.xpath("//input[@textarea[@ngmodel='Address']")).sendKeys("Enter details");
+//email
+driver.findElement(By.xpath("//input 
+@type='email']")).sendKeys("abhi@gmail.com");
+//phone number
+driver.findElement(By.xpath("//input[@@type='tel']")).sendKeys("1122334455");
+//gender
+driver.findElement(By.xpath("//input[@value='Male']")).click();
+driver.findElement(By.id("checkbox")).click();
+//hobbies
+driver.findElement(By.xpath("//div[@id='msdd']")).click();
+//language
+driver.findElement(By.xpath("//div[@id='msdd']/../div[2]/ul/li/a[contains(text().'
+Abhi')]")).click();
+//skills
+Select skills=new Select(driver.findElement(By.id("Skills")));
+skills.selectByVisibleText("java");
+//country
+Select country=new Select(driver.findElement(By.id("countries")));
+country.selectByVisibleText("india");
+//DOB
+Select year=new Select(driver.findElement(By.id("yearbox")));
+year.selectByVisibleText("2010");
+Select month=new
+Select(driver.findElement(By.xpath("//select[@placeholder='Month']")));
+month.selectByVisibleText("March");
+Select day=new Select(driver.findElement(By.id("daybox")));
+day.selectByVisibleText("13");
+//password
+driver.findElement(By.id("firstpassword")).sendKeys("Abhi@123");
+driver.findElement(By.id("secondpassword")).sendKeys("Abhi@123");
+driver.findElement(By.id("submitbtn")).submit();
+}
+}
+Login testcase =
+package seleniumPhase5Demo;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+public class seleniumdemo5 {
+@Test
+public static void main(String[] args)
+{
+System.setProperty("webdriver.chrome.driver","C:\\chrome 
+driver\\chromedriver.exe");
+ WebDriver driver=new ChromeDriver();
+driver.get("http://zero.webappsecurity.com/login.html");
+WebElement txtbx_username=
+driver.findElement(By.id("user_login"));
+txtbx_username.sendKeys("username");
+driver.findElement(By.id("user_password")).sendKeys("password");
+driver.findElement(By.name("submit")).click();
+String expected_title="Zero-account Summary";
+String actual_title=driver.getTitle();
+Assert.assertEquals(expected_title,actual_title);
+}
+}
